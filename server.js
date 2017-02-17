@@ -3,18 +3,15 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 
-const api = require('./server/routes/api');
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use(express.static(path.join(__dirname, 'dist')));
-
-app.use('/api', api);
+app.use(express.static(path.join(__dirname, '../City-of-Mercer-Island-Internal-Tools/dist')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, '../City-of-Mercer-Island-Internal-Tools/dist/index.html'));
 });
 
 const port = process.env.PORT || '8080';
